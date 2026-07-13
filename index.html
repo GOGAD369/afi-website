@@ -135,15 +135,16 @@ nav {
   padding:18px 20px;
   box-shadow:0 8px 40px rgba(0,0,0,0.08);
   border:1px solid var(--border);
-  animation:floatCard 4s ease-in-out infinite;
+  width:180px;
+  transition:transform 0.15s ease-out;
 }
 @keyframes floatCard {
-  0%,100% { transform:translateY(0); }
-  50% { transform:translateY(-10px); }
+  0%,100% { transform:translateY(0px); }
+  50% { transform:translateY(-8px); }
 }
-.fc-1 { top:10%; left:0; width:200px; animation-delay:0s; }
-.fc-2 { top:5%; right:0; width:210px; animation-delay:1.5s; z-index:3; }
-.fc-3 { bottom:10%; left:30%; width:190px; animation-delay:0.8s; }
+.fc-1 { top:8%; left:4%; animation:floatCard 4s ease-in-out infinite; animation-delay:0s; }
+.fc-2 { top:8%; right:4%; animation:floatCard 4s ease-in-out infinite; animation-delay:1.5s; }
+.fc-3 { bottom:8%; left:4%; animation:floatCard 4s ease-in-out infinite; animation-delay:0.8s; }
 .fc-icon { font-size:24px; margin-bottom:8px; }
 .fc-label { font-size:10px; color:var(--muted); text-transform:uppercase; letter-spacing:1px; margin-bottom:4px; }
 .fc-value { font-size:22px; font-weight:700; color:var(--black); }
@@ -155,14 +156,19 @@ nav {
 /* Main visual card */
 .main-card {
   position:absolute;
-  top:55%; left:40%; transform:translate(-50%,-50%);
-  width:240px;
+  top:50%; left:50%; transform:translate(-50%,-50%) translateY(0px);
+  width:220px;
   background:#0f172a;
   border-radius:20px;
   padding:24px;
-  box-shadow:0 20px 60px rgba(0,0,0,0.2);
+  box-shadow:0 32px 80px rgba(0,0,0,0.4), 0 0 0 1px rgba(0,200,83,0.2);
   color:#fff;
-  z-index:2;
+  z-index:4;
+  animation:floatMain 5s ease-in-out infinite;
+}
+@keyframes floatMain {
+  0%,100% { transform:translate(-50%,-50%) translateY(0px); }
+  50% { transform:translate(-50%,-50%) translateY(-14px); }
 }
 .main-card-logo { font-family:'Playfair Display', serif; font-size:15px; font-weight:900; color:var(--green); margin-bottom:16px; }
 .wa-metric { display:flex; align-items:center; justify-content:space-between; margin-bottom:10px; }
@@ -693,18 +699,6 @@ footer { background:var(--black); padding:40px 6%; display:flex; align-items:cen
 const obs = new IntersectionObserver((entries) => {
   entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
 }, { threshold:0.08 });
-  document.addEventListener('mousemove', e => {
-  const cx = window.innerWidth / 2;
-  const cy = window.innerHeight / 2;
-  const dx = (e.clientX - cx) / cx;
-  const dy = (e.clientY - cy) / cy;
-  document.querySelectorAll('.float-card').forEach((card, i) => {
-    const depth = (i + 1) * 8;
-    card.style.transform = `translate(${dx * depth}px, ${dy * depth}px)`;
-  });
-  const main = document.querySelector('.main-card');
-  if(main) main.style.transform = `translate(${dx * 5}px, ${dy * 5}px)`;
-});
 document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
 </script>
 <div class="cursor-ball" id="cursorBall"></div>
@@ -713,7 +707,31 @@ const ball = document.getElementById('cursorBall');
 document.addEventListener('mousemove', e => {
   ball.style.left = e.clientX + 'px';
   ball.style.top = e.clientY + 'px';
+
+  const visual = document.querySelector('.hero-visual');
+  if(!visual) return;
+  const rect = visual.getBoundingClientRect();
+  const cx = rect.left + rect.width / 2;
+  const cy = rect.top + rect.height / 2;
+  const dx = (e.clientX - cx) / (rect.width / 2);
+  const dy = (e.clientY - cy) / (rect.height / 2);
+
+  document.querySelectorAll('.float-card').forEach((card, i) => {
+    const depth = (i + 1) * 5;
+    const base = card.style.animation;
+    card.style.transform = `translate(${dx * depth}px, ${dy * depth}px)`;
+  });
+
+  const main = document.querySelector('.main-card');
+  if(main) main.style.transform = `translate(-50%, -50%) translate(${dx * 10}px, ${dy * 10}px)`;
 });
+
+document.querySelector('.hero-visual')?.addEventListener('mouseleave', () => {
+  document.querySelectorAll('.float-card').forEach(card => card.style.transform = '');
+  const main = document.querySelector('.main-card');
+  if(main) main.style.transform = 'translate(-50%, -50%)';
+});
+
 document.querySelectorAll('a, button').forEach(el => {
   el.addEventListener('mouseenter', () => ball.classList.add('expand'));
   el.addEventListener('mouseleave', () => ball.classList.remove('expand'));
