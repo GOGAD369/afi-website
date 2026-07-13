@@ -130,21 +130,29 @@ nav {
 .hero-visual { position:relative; height:500px; }
 .float-card {
   position:absolute;
+  width:180px;
+  transition:transform 0.12s ease-out;
+}
+.float-card-inner {
   background:var(--white);
   border-radius:16px;
   padding:18px 20px;
   box-shadow:0 8px 40px rgba(0,0,0,0.08);
   border:1px solid var(--border);
-  width:180px;
-  transition:transform 0.15s ease-out;
+  animation:floatCard 4s ease-in-out infinite;
 }
 @keyframes floatCard {
   0%,100% { transform:translateY(0px); }
   50% { transform:translateY(-8px); }
 }
-.fc-1 { top:8%; left:4%; animation:floatCard 4s ease-in-out infinite; animation-delay:0s; }
-.fc-2 { top:8%; right:4%; animation:floatCard 4s ease-in-out infinite; animation-delay:1.5s; }
-.fc-3 { bottom:8%; left:4%; animation:floatCard 4s ease-in-out infinite; animation-delay:0.8s; }
+.fc-1 { top:8%; left:4%; }
+.fc-1 .float-card-inner { animation-delay:0s; }
+.fc-2 { top:8%; right:4%; }
+.fc-2 .float-card-inner { animation-delay:1.5s; }
+.fc-3 { bottom:8%; left:4%; }
+.fc-3 .float-card-inner { animation-delay:0.8s; }
+.fc-4 { bottom:8%; right:4%; }
+.fc-4 .float-card-inner { animation-delay:2.2s; }
 .fc-icon { font-size:24px; margin-bottom:8px; }
 .fc-label { font-size:10px; color:var(--muted); text-transform:uppercase; letter-spacing:1px; margin-bottom:4px; }
 .fc-value { font-size:22px; font-weight:700; color:var(--black); }
@@ -442,26 +450,42 @@ footer { background:var(--black); padding:40px 6%; display:flex; align-items:cen
 
     <!-- Float cards -->
     <div class="float-card fc-1">
-      <div class="fc-icon">💬</div>
-      <div class="fc-label">WhatsApp Reach</div>
-      <div class="fc-value green">94%</div>
-      <div class="fc-sub">Open rate vs 20% email</div>
-      <div class="fc-bar"><div class="fc-bar-fill" style="width:94%"></div></div>
+      <div class="float-card-inner">
+        <div class="fc-icon">💬</div>
+        <div class="fc-label">WhatsApp Reach</div>
+        <div class="fc-value green">94%</div>
+        <div class="fc-sub">Open rate vs 20% email</div>
+        <div class="fc-bar"><div class="fc-bar-fill" style="width:94%"></div></div>
+      </div>
     </div>
 
     <div class="float-card fc-2">
-      <div class="fc-icon">📈</div>
-      <div class="fc-label">Avg ROI</div>
-      <div class="fc-value">3.8×</div>
-      <div class="fc-sub">Return on ad spend</div>
-      <div class="fc-bar"><div class="fc-bar-fill" style="width:76%"></div></div>
+      <div class="float-card-inner">
+        <div class="fc-icon">📈</div>
+        <div class="fc-label">Avg ROI</div>
+        <div class="fc-value">3.8×</div>
+        <div class="fc-sub">Return on ad spend</div>
+        <div class="fc-bar"><div class="fc-bar-fill" style="width:76%"></div></div>
+      </div>
     </div>
 
     <div class="float-card fc-3">
-      <div class="fc-icon">⚡</div>
-      <div class="fc-label">Bot Response</div>
-      <div class="fc-value green">&lt;2s</div>
-      <div class="fc-sub">Instant AI replies 24/7</div>
+      <div class="float-card-inner">
+        <div class="fc-icon">⚡</div>
+        <div class="fc-label">Bot Response</div>
+        <div class="fc-value green">&lt;2s</div>
+        <div class="fc-sub">Instant AI replies 24/7</div>
+      </div>
+    </div>
+
+    <div class="float-card fc-4">
+      <div class="float-card-inner">
+        <div class="fc-icon">🤝</div>
+        <div class="fc-label">Clients Served</div>
+        <div class="fc-value green">50+</div>
+        <div class="fc-sub">Businesses across Tamil Nadu</div>
+        <div class="fc-bar"><div class="fc-bar-fill" style="width:85%"></div></div>
+      </div>
     </div>
   </div>
 </section>
