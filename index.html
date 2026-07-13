@@ -142,7 +142,7 @@ nav {
   50% { transform:translateY(-10px); }
 }
 .fc-1 { top:10%; left:0; width:200px; animation-delay:0s; }
-.fc-2 { top:35%; right:0; width:210px; animation-delay:1.5s; }
+.fc-2 { top:35%; right:0; width:210px; animation-delay:1.5s; z-index:3; }
 .fc-3 { bottom:10%; left:10%; width:190px; animation-delay:0.8s; }
 .fc-icon { font-size:24px; margin-bottom:8px; }
 .fc-label { font-size:10px; color:var(--muted); text-transform:uppercase; letter-spacing:1px; margin-bottom:4px; }
@@ -155,8 +155,8 @@ nav {
 /* Main visual card */
 .main-card {
   position:absolute;
-  top:50%; left:50%; transform:translate(-50%,-50%);
-  width:260px;
+  top:50%; left:40%; transform:translate(-50%,-50%);
+  width:240px;
   background:#0f172a;
   border-radius:20px;
   padding:24px;
