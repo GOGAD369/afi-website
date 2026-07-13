@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Careers · Afi Digital Solutions</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+  :root{
+    --bg: #0B0F0D;
+    --card: #131A16;
+    --card-alt: #182019;
+    --text: #EAF2EC;
+    --text-soft: #93A79B;
+    --green: #22C55E;
+    --green-dim: #16A34A;
+    --line: #223027;
+    --whatsapp: #25D366;
+    --amber: #E8B458;
+  }
+
+  *{ box-sizing:border-box; }
+  html,body{ margin:0; padding:0; }
+  body{
+    background:
+      radial-gradient(600px 300px at 85% -5%, rgba(34,197,94,0.10), transparent 60%),
+      var(--bg);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    min-height: 100vh;
+    padding: 44px 20px 90px;
+  }
+
+  .wrap{ max-width: 700px; margin: 0 auto; }
+
+  .brand{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 30px;
+  }
+  .brand-mark{
+    width: 34px; height: 34px;
+    border-radius: 9px;
+    background: linear-gradient(135deg, var(--green), var(--green-dim));
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    color: #06170D;
+    font-size: 15px;
+    flex-shrink: 0;
+  }
+  .brand-name{
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    letter-spacing: 0.01em;
+  }
+  .brand-name span{ color: var(--text-soft); font-weight: 400; }
+
+  .brand-home{
+    margin-left: auto;
+    font-size: 12px;
+    color: var(--text-soft);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: color 0.15s;
+  }
+  .brand-home:hover{ color: var(--green); }
+
+  .live-chip{
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10.5px;
+    color: var(--text-soft);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-left: 16px;
+  }
+  .live-dot{
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--green);
+    box-shadow: 0 0 0 0 rgba(34,197,94,0.6);
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse{
+    0%{ box-shadow: 0 0 0 0 rgba(34,197,94,0.55); }
+    70%{ box-shadow: 0 0 0 7px rgba(34,197,94,0); }
+    100%{ box-shadow: 0 0 0 0 rgba(34,197,94,0); }
+  }
+
+  h1{
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: clamp(32px, 6vw, 46px);
+    line-height: 1.08;
+    margin: 4px 0 10px;
+    letter-spacing: -0.01em;
+  }
+  h1 em{ color: var(--green); font-style: normal; }
+
+  .sub{
+    color: var(--text-soft);
+    font-size: 15px;
+    max-width: 48ch;
+    line-height: 1.55;
+    margin-bottom: 36px;
+  }
+
+  form{
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    overflow: hidden;
+  }
+
+  .field{
+    padding: 20px 22px;
+    border-bottom: 1px solid var(--line);
+  }
+  .field:last-of-type{ border-bottom: none; }
+
+  .row2{ display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  @media (max-width: 560px){ .row2{ grid-template-columns: 1fr; } }
+  .row2 > div{ padding: 0; }
+
+  .field-label{
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--green);
+    display: block;
+    margin-bottom: 9px;
+  }
+  .field-label .opt{
+    color: var(--text-soft);
+    text-transform: none;
+    letter-spacing: 0;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+  }
+
+  input[type=text], input[type=email], input[type=tel], textarea{
+    width: 100%;
+    border: none;
+    border-bottom: 1.5px solid var(--line);
+    background: transparent;
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    color: var(--text);
+    padding: 6px 2px 9px;
+    outline: none;
+    transition: border-color 0.15s ease;
+    resize: vertical;
+  }
+  textarea{ min-height: 70px; line-height: 1.5; }
+  input::placeholder, textarea::placeholder{ color: #5B6E63; }
+  input:focus, textarea:focus{ border-bottom-color: var(--green); }
+  input:focus-visible, textarea:focus-visible{
+    outline: 2px solid var(--green);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  .dropzone{
+    border: 1.5px dashed var(--line);
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    cursor: pointer;
+    transition: border-color 0.15s ease, background 0.15s ease;
+    background: var(--card-alt);
+  }
+  .dropzone:hover, .dropzone.drag{ border-color: var(--green); background: #152018; }
+  .dropzone input[type=file]{ display: none; }
+  .dz-icon{
+    width: 38px; height: 38px; flex-shrink: 0;
+    border-radius: 8px;
+    background: #1B271F;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--green);
+  }
+  .dz-icon svg{ width: 19px; height: 19px; }
+  .dz-text{ font-size: 13.5px; color: var(--text-soft); line-height: 1.45; }
+  .dz-text strong{ color: var(--text); font-weight: 500; }
+  .dz-file{
+    display: none;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    font-size: 13.5px;
+    padding-top: 4px;
+  }
+  .dz-file.show{ display: flex; }
+  .dz-file .fname{ color: var(--text); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .dz-remove{
+    background: none; border: none; color: var(--text-soft);
+    cursor: pointer; font-size: 12px; text-decoration: underline;
+    flex-shrink: 0;
+  }
+  .dz-remove:hover{ color: var(--text); }
+  .dz-err{ color: #F0876B; font-size: 12.5px; margin-top: 8px; display: none; }
+
+  .submit-row{
+    padding: 20px 22px 24px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  button.submit{
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    background: var(--green);
+    color: #06170D;
+    border: none;
+    padding: 14px 26px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background 0.15s ease, transform 0.1s ease;
+  }
+  button.submit:hover{ background: #35D96E; }
+  button.submit:active{ transform: translateY(1px); }
+  button.submit:disabled{ opacity: 0.55; cursor: default; }
+  button.submit:focus-visible{ outline: 2px solid var(--text); outline-offset: 3px; }
+
+  .form-msg{ font-size: 13px; color: var(--text-soft); line-height: 1.5; }
+  .form-msg.err{ color: #F0876B; }
+  .form-msg.ok{ color: var(--green); }
+
+  .actions{
+    display: flex;
+    gap: 12px;
+    margin-top: 26px;
+    flex-wrap: wrap;
+  }
+  .action-btn{
+    flex: 1 1 220px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 14px 18px;
+    border-radius: 9px;
+    text-decoration: none;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 14.5px;
+    border: 1.5px solid var(--line);
+    color: var(--text);
+    transition: transform 0.1s ease, border-color 0.15s ease;
+  }
+  .action-btn:hover{ transform: translateY(-1px); }
+  .action-btn:focus-visible{ outline: 2px solid var(--text); outline-offset: 3px; }
+  .action-btn.wa{ background: rgba(37,211,102,0.1); border-color: rgba(37,211,102,0.35); color: #6FE39A; }
+  .action-btn.wa:hover{ border-color: var(--whatsapp); }
+  .action-btn.mail:hover{ border-color: var(--amber); }
+  .action-btn svg{ width: 18px; height: 18px; flex-shrink: 0; }
+
+  footer{
+    margin-top: 40px;
+    text-align: center;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: #4E6058;
+    letter-spacing: 0.03em;
+  }
+
+  .success-screen{
+    display: none;
+    text-align: center;
+    padding: 60px 20px;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+  }
+  .success-screen.show{ display: block; }
+  .success-icon{
+    width: 60px; height: 60px;
+    border-radius: 50%;
+    background: rgba(34,197,94,0.15);
+    border: 2px solid var(--green);
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 20px;
+    font-size: 26px;
+  }
+  .success-screen h2{
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+  .success-screen p{
+    color: var(--text-soft);
+    font-size: 14px;
+    line-height: 1.6;
+    max-width: 36ch;
+    margin: 0 auto;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .live-dot{ animation: none; }
+    button.submit:active{ transform: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <div class="brand">
+    <div class="brand-mark">AF</div>
+    <div class="brand-name">Afi Digital Solutions <span>· Careers</span></div>
+    <div class="live-chip"><span class="live-dot"></span>We reply fast</div>
+    <a class="brand-home" href="https://gogad369.github.io/afi-website/" title="Back to main site">← Back</a>
+  </div>
+
+  <h1>Join the team<br>building <em>smart growth.</em></h1>
+  <p class="sub">Tell us about yourself and attach your resume — your application goes straight to our hiring inbox. Prefer a faster route? Message us on WhatsApp.</p>
+
+  <form id="intakeForm" action="https://formbold.com/s/3pBLz" method="POST" novalidate enctype="multipart/form-data">
+    <input type="hidden" name="subject" value="New Careers Application - Afi Digital Solutions">
+    <div class="field row2" style="display:grid;">
+      <div>
+        <label class="field-label" for="fullName">Full name</label>
+        <input type="text" id="fullName" name="fullName" placeholder="Jordan Rivera" required>
+      </div>
+      <div>
+        <label class="field-label" for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="you@example.com" required>
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="field-label" for="phone">Phone <span class="opt">optional</span></label>
+      <input type="tel" id="phone" name="phone" placeholder="+91 98765 43210">
+    </div>
+
+    <div class="field">
+      <label class="field-label">Resume</label>
+      <label class="dropzone" id="dropzone" for="resumeFile">
+        <div class="dz-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3v12"/><path d="M7 10l5 5 5-5"/><path d="M4 19h16"/></svg>
+        </div>
+        <div style="flex:1; min-width:0;">
+          <div class="dz-text"><strong>Click to upload</strong> or drag your resume here — PDF or Word, up to 3MB.</div>
+          <div class="dz-file" id="dzFile">
+            <span class="fname" id="dzFilename"></span>
+            <button type="button" class="dz-remove" id="dzRemove">Remove</button>
+          </div>
+        </div>
+        <input type="file" id="resumeFile" name="resume" accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document">
+      </label>
+      <div class="dz-err" id="dzErr"></div>
+    </div>
+
+    <div class="field">
+      <label class="field-label" for="skills">Skills <span class="opt">if any</span></label>
+      <input type="text" id="skills" name="skills" placeholder="React, Python, SQL, Figma">
+    </div>
+
+    <div class="field">
+      <label class="field-label" for="projects">Projects <span class="opt">if any</span></label>
+      <textarea id="projects" name="projects" placeholder="What you built, your role, and the outcome."></textarea>
+    </div>
+
+    <div class="field">
+      <label class="field-label" for="experience">Experience <span class="opt">if any</span></label>
+      <textarea id="experience" name="experience" placeholder="Companies, roles, and time periods."></textarea>
+    </div>
+
+    <div class="submit-row">
+      <button type="submit" class="submit" id="submitBtn">Submit application</button>
+      <span class="form-msg" id="formMsg"></span>
+    </div>
+  </form>
+
+  <div class="success-screen" id="successScreen">
+    <div class="success-icon">✓</div>
+    <h2>Application received!</h2>
+    <p>We've got your details and will reach out to you soon. Thanks for applying to Afi Digital Solutions.</p>
+  </div>
+
+  <div class="actions">
+    <a class="action-btn wa" id="waBtn" href="https://wa.me/917639917149" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.29-1.39a9.87 9.87 0 0 0 4.75 1.21h.01c5.46 0 9.9-4.45 9.9-9.91C21.96 6.45 17.5 2 12.04 2zm0 18.04h-.01a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.14.82.84-3.06-.2-.31a8.19 8.19 0 0 1-1.26-4.35c0-4.54 3.7-8.23 8.25-8.23 2.2 0 4.27.86 5.83 2.42a8.18 8.18 0 0 1 2.41 5.82c0 4.55-3.7 8.24-8.24 8.24zm4.52-6.17c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.13-.17.24-.64.81-.78.97-.14.17-.29.19-.53.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.24-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.15.16-.25.24-.42.08-.17.04-.31-.02-.43-.06-.12-.56-1.36-.77-1.86-.2-.49-.41-.42-.56-.43-.14-.01-.31-.01-.48-.01-.17 0-.43.06-.66.31-.23.24-.86.85-.86 2.06 0 1.22.89 2.39 1.01 2.56.12.17 1.75 2.68 4.25 3.75.59.26 1.06.41 1.42.53.6.19 1.14.16 1.57.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.08.14-1.18-.06-.1-.23-.16-.48-.28z"/></svg>
+      Message us on WhatsApp
+    </a>
+    <a class="action-btn mail" href="mailto:gogadafiofficial@gmail.com?subject=Enquiry">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+      Email us
+    </a>
+  </div>
+
+  <footer>AFI DIGITAL SOLUTIONS · TRICHY &amp; CHENNAI, TAMIL NADU</footer>
+</div>
+
+<script>
+  const MAX_FILE_BYTES = 3 * 1024 * 1024;
+
+  const dropzone = document.getElementById('dropzone');
+  const fileInput = document.getElementById('resumeFile');
+  const dzFile = document.getElementById('dzFile');
+  const dzFilename = document.getElementById('dzFilename');
+  const dzRemove = document.getElementById('dzRemove');
+  const dzErr = document.getElementById('dzErr');
+
+  function setFile(file){
+    dzErr.style.display = 'none';
+    if(!file){ dzFile.classList.remove('show'); return; }
+    if(file.size > MAX_FILE_BYTES){
+      dzErr.textContent = `That file is ${(file.size/1024/1024).toFixed(1)}MB — please keep it under 3MB.`;
+      dzErr.style.display = 'block';
+      fileInput.value = '';
+      dzFile.classList.remove('show');
+      return;
+    }
+    dzFilename.textContent = `${file.name} · ${(file.size/1024).toFixed(0)}KB`;
+    dzFile.classList.add('show');
+  }
+
+  fileInput.addEventListener('change', () => setFile(fileInput.files[0]));
+  dzRemove.addEventListener('click', (e) => { e.preventDefault(); fileInput.value=''; setFile(null); });
+  ['dragover','dragenter'].forEach(evt => dropzone.addEventListener(evt, e => { e.preventDefault(); dropzone.classList.add('drag'); }));
+  ['dragleave','drop'].forEach(evt => dropzone.addEventListener(evt, e => { e.preventDefault(); dropzone.classList.remove('drag'); }));
+  dropzone.addEventListener('drop', e => {
+    const file = e.dataTransfer.files[0];
+    if(file){ fileInput.files = e.dataTransfer.files; setFile(file); }
+  });
+
+  const form = document.getElementById('intakeForm');
+  const submitBtn = document.getElementById('submitBtn');
+  const formMsg = document.getElementById('formMsg');
+  const successScreen = document.getElementById('successScreen');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    formMsg.textContent = '';
+    formMsg.classList.remove('err','ok');
+
+    const fullName = document.getElementById('fullName').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const file = fileInput.files[0];
+
+    if(!fullName || !email || !file){
+      formMsg.textContent = 'Please fill in your name, email, and attach your resume.';
+      formMsg.classList.add('err');
+      return;
+    }
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Submitting…';
+
+    try {
+      const data = new FormData(form);
+      const response = await fetch(form.action, {
+        method: 'POST',
+        body: data,
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (response.ok) {
+        form.style.display = 'none';
+        successScreen.classList.add('show');
+      } else {
+        const result = await response.json().catch(() => null);
+        throw new Error((result && (result.message || result.error)) || `Server error (status ${response.status})`);
+      }
+    } catch(err) {
+      formMsg.textContent = err.message && err.message !== 'Failed to fetch'
+        ? `Something went wrong: ${err.message}`
+        : 'Something went wrong — please try again or message us directly.';
+      formMsg.classList.add('err');
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Submit application';
+    }
+  });
+</script>
+
+</body>
+</html>
