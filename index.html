@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Afi Digital Solutions</title>
+<style>
 /* Custom Cursor */
 * { cursor: none; }
 .cursor-ball {
@@ -21,7 +22,7 @@
   transform: translate(-50%, -50%) scale(2.5);
   background: var(--green);
   opacity: 0.4;
-}<style>
+}
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=Inter:wght@300;400;500;600;700&display=swap');
 
 :root {
@@ -369,24 +370,7 @@ footer { background:var(--black); padding:40px 6%; display:flex; align-items:cen
 /* ── ANIMATIONS ── */
 .fade-up { opacity:0; transform:translateY(24px); transition:0.65s ease; }
 .fade-up.visible { opacity:1; transform:translateY(0); }
-/* Custom Cursor */
-* { cursor: none; }
-.cursor-ball {
-  width: 20px; height: 20px;
-  background: var(--green);
-  border-radius: 50%;
-  position: fixed;
-  pointer-events: none;
-  z-index: 9999;
-  transition: transform 0.15s ease, background 0.2s;
-  transform: translate(-50%, -50%);
-  mix-blend-mode: multiply;
-}
-.cursor-ball.expand {
-  transform: translate(-50%, -50%) scale(2.5);
-  background: var(--green);
-  opacity: 0.4;
-}</style>
+</style>
 </head>
 <body>
 
@@ -400,7 +384,10 @@ footer { background:var(--black); padding:40px 6%; display:flex; align-items:cen
     <a href="#contact">Contact</a>
     <a href="https://gogad369.github.io/afi-website/recruit" target="_blank" style="color:var(--green);font-weight:600;">Join Us</a>
   </div>
-  <a href="https://wa.me/917639917149" target="_blank" class="nav-cta" style="text-decoration:none;">Get Started</a>
+  <div style="display:flex;align-items:center;gap:8px;">
+    <a href="https://gogad369.github.io/afi-website/recruit" target="_blank" style="text-decoration:none;padding:10px 16px;border:1.5px solid var(--green);color:var(--green);font-size:12px;font-weight:600;border-radius:100px;letter-spacing:0.5px;white-space:nowrap;">Join Us</a>
+    <a href="https://wa.me/917639917149" target="_blank" class="nav-cta" style="text-decoration:none;">Get Started</a>
+  </div>
 </nav>
 
 <!-- HERO -->
