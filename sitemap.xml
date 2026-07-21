@@ -8,8 +8,14 @@
   </url>
   <url>
     <loc>https://gogadafi.in/privacy.html</loc>
-    <lastmod>2025-07-21</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://gogadafi.in/recruit</loc>
+    <lastmod>2026-07-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
 </urlset>
